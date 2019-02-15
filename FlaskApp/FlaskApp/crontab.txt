@@ -1,0 +1,26 @@
+command:   crontab -e
+
+
+minute	hour	day_of_the_month	month	day_of_week
+*		*		*					*		*
+
+every 5 minutes:
+*/5 * * * *
+
+every 5 hrs:
+* */5 * * *
+
+every hour, at the 1 minutes mark:
+1 * * * *
+
+at 2:45am every morning:
+45 2 * * *
+
+
+Eg:
+
+*/15 * * * * sudo echo 1 > /proc/sys/vm/drop_caches
+*/15 * * * * sudo echo 2 > /proc/sys/vm/drop_caches
+*/15 * * * * sudo echo 3 > /proc/sys/vm/drop_caches
+
+1,15,30,59 * * * * sudo python /var/www/PythonProgramming/PythonProgramming/user-data-tracking.py

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Flask Tutorials</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link href="{{ url_for('static',filename='css/bootstrap.min.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static',filename='css/all.css') }}" rel="stylesheet">
+	<link rel="shortcut icon" href="{{ url_for('static',filename='favicon.ico') }}">
+</head>
+<header>
+	<div class="navbar-header" style="float: left;">
+		<a class="navbar-brand" href="/">
+		<img style="max-width:120px; margin-top:20px;" src="{{ url_for('static',filename='images/mainlogo.png') }}">
+		</a>
+	</div>
+	<div class="container-fluid">
+  		<a href="/dashboard/">
+		<button type="button" class="btn btn-primary" aria-label="Left Align" style="margin-top: 25px; margin-bottom: 5px; height: 40px; margin-right: 15px">
+		<span class="fas fa-power-off"></span> Start Learning
+		</button></a>
+		<a href="/include_example/">
+		<button type="button" class="btn btn-primary" aria-label="Left Align" style="margin-top: 25px; margin-bottom: 5px; height: 40px; margin-right: 15px"> include example
+		</button></a>
+		<a href="/jinjaman/">
+		<button type="button" class="btn btn-primary" aria-label="Left Align" style="margin-top: 25px; margin-bottom: 5px; height: 40px; margin-right: 15px"> jinja example
+		</button></a>
+		<a href="/send-mail/">
+		<button type="button" class="btn btn-primary" aria-label="Left Align" style="margin-top: 25px; margin-bottom: 5px; height: 40px; margin-right: 15px"> flask-mail example
+		</button></a>
+		<a href="/return-file/">
+		<button type="button" class="btn btn-primary" aria-label="Left Align" style="margin-top: 25px; margin-bottom: 5px; height: 40px; margin-right: 15px"> download example
+		</button></a>
+		<a href="/secret/abcd.png">
+		<button type="button" class="btn btn-primary" aria-label="Left Align" style="margin-top: 25px; margin-bottom: 5px; height: 40px; margin-right: 15px"> protected example
+		</button></a>
+		<a href="/interactive/">
+		<button type="button" class="btn btn-primary" aria-label="Left Align" style="margin-top: 25px; margin-bottom: 5px; height: 40px; margin-right: 15px"> jquery example
+		</button></a>
+		<a href="/pygalexample/">
+		<button type="button" class="btn btn-primary" aria-label="Left Align" style="margin-top: 25px; margin-bottom: 5px; height: 40px; margin-right: 15px"> pygal example
+		</button></a>
+		<a href="/paypalexample/">
+		<button type="button" class="btn btn-primary" aria-label="Left Align" style="margin-top: 25px; margin-bottom: 5px; height: 40px; margin-right: 15px"> paypal example vid
+		</button></a>
+		<ul class="nav navbar-nav navbar-right" style="margin-top: 25px">
+			<div style="margin-right: 10px; margin-left: 15px;margin-top: 5px; margin-bottom: 5px;" class="container-fluid">
+				{% if session.logged_in %}
+					<a href="/support/"><span class="fas fa-heart"> <b>Support</b>&nbsp;&nbsp;&nbsp;</span></a>
+					<a href="/logout/"><span class="fas fa-sign-out-alt"> <label><b>Logout</b>&nbsp;&nbsp;&nbsp;</label></span></a>
+				{% else %}
+					<a href="/support/"><span class="fas fa-heart"> <b>Support</b>&nbsp;&nbsp;&nbsp;</span></a>
+					<a href="/login/"><span class="fas fa-sign-in-alt"> <label><b>Login</b>&nbsp;&nbsp;&nbsp;</label></span></a>
+					<a href="/register/"><span class="fas fa-pen"> <b>Signup</b>&nbsp;&nbsp;&nbsp;&nbsp;</span></a>
+				{% endif %}
+			<!-- Login Modal Button 
+			<a href="#" role="presentation" class="active" data-toggle="modal" data-target="#myModal"><span class="fas fa-sign-in-alt"> <label><b>Login</b>&nbsp;&nbsp;&nbsp;</label></span></a> -->
+			<!-- Signup Modal Button 
+			<a href="#" role="presentation" class="active" data-toggle="modal" data-target="#signup"><span class="fas fa-pen"> <b>Signup</b>&nbsp;&nbsp;&nbsp;&nbsp;</span></a>-->
+			<!-- Login Modal 
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  		<div class="modal-dialog" role="document">
+	    	        <div class="modal-content">
+	      	        <div class="modal-header">
+	        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        	<h4 class="modal-title" id="myModalLabel">Login</h4>
+	      	        </div>
+	                <div class="modal-body">
+	               	<form method=post>
+			  <div class="form-group">
+				<label for="Email1">Email Address</label>
+				<input type="email" class="form-control" id="Email1" placeholder="Email">
+			  </div>
+			  <div class="form-group">
+				<label for="Password1">Password</label>
+				<input type="password" class="form-control" id="Password1" placeholder="Password">
+			  </div>
+			  <div class="form-group">
+				<label>No account????...</label><a href="#" role="presentation" class="active" data-toggle="modal" data-target="#signup" data-dismiss="modal">Sign up here..</a> 
+			  </div>
+			</form>
+	                </div>
+	      		<div class="modal-footer">
+	        	<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+	        	<button type="button" class="btn btn-primary">Login</button>
+	      		</div>
+	    		</div>
+	  		</div>
+			</div> -->
+			<!-- signup Modal 
+			<div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="signuplabel">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				  <h4 class="modal-title" id="signuplabel">Signup</h4>
+			      </div>
+			      <div class="modal-body">
+				<form method=post>
+				  <div class="form-group">
+				    <label for="Email2">Email Address</label>
+				    <input type="email" class="form-control" id="Email2" placeholder="Email">
+				  </div>
+				  <div class="form-group">
+				    <label for="Password2">Password</label>
+				    <input type="password" class="form-control" id="Password2" placeholder="Password">
+				  </div>
+				  <div class="form-group">
+				    <label for="ConPassword2">Confirm Password</label>
+				    <input type="password" class="form-control" id="ConPassword2" placeholder="Retype Password">
+				  </div>
+				  <div class="form-group">
+				    <label>Already have an account?</label> <a href="#" data-toggle="modal" data-target="#myModal" data-dismiss="modal" class="active" role="presentation"> Login </a> 
+				</form>
+			      </div>
+			    <div class="modal-footer">
+			      <button type="button" class="btn btn-defaule" data-dismiss="modal">Cancel</button>
+			      <button type="button" class="btn btn-primary">Signup</button>
+			    </div>
+			    </div>
+		          </div>
+			</div> -->   
+			</div>
+      	</ul>
+	</div>
+</header>
+<body>
+	
+<div class="container-fluid" style="min-height:100% width:80%">
+
+{% with messages = get_flashed_messages() %}
+	{% if messages %}
+		{% for message in messages %}
+			<div class="alert alert-warning alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				{{message}}
+			</div>
+		{% endfor %}
+	{% endif %}
+{% endwith %}
+
+{% block body %} {% endblock %}
+
+</div>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+</body>
+</html>
+
